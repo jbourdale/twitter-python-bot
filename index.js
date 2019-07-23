@@ -33,12 +33,14 @@ pySandbox.initialize(err => {
                 throw new Error(`unable to run the code in the sandbox: ${err}`)
             }
 
-            console.log('execution result : ', result); // Hello, world!
-            T.post('statuses/update', {
-                status: `@${tweet.user.screen_name} ${result.combined}`,
-                in_reply_to_status_id: tweet.in_reply_to_user_id,
-                auto_populate_reply_metadata: true
-            });
+            console.log('execution result : ', result.combined); // Hello, world!
+            setTimeout(() => {
+                T.post('statuses/update', {
+                    status: `@${tweet.user.screen_name} ${result.combined}`,
+                    in_reply_to_status_id: tweet.id,
+                    auto_populate_reply_metadata: true
+                });
+            }, 1000);
         });
     });
 });
