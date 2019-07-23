@@ -1,0 +1,24 @@
+{
+  "name": "twitter-python-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbourdale/twitter-python-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbourdale/twitter-python-bot/issues"
+  },
+  "homepage": "https://github.com/jbourdale/twitter-python-bot#readme",
+  "dependencies": {
+    "docker-python-sandbox": "0.0.7",
+    "twit": "^2.2.11",
+    "user-stream": "0.0.8"
+  }
+}
