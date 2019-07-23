@@ -36,7 +36,7 @@ pySandbox.initialize(err => {
             console.log('execution result : ', result); // Hello, world!
             T.post('statuses/update', {
                 status: `@${tweet.user.screen_name} ${result.combined}`,
-                in_reply_to_status_id: tweet.id
+                in_reply_to_status_id: tweet.in_reply_to_user_id
             });
         });
     });
