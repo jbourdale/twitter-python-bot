@@ -10,7 +10,7 @@ const T = new Twit({
 
 const twitterStream = T.stream('statuses/filter', { track: '@PythonCodeBot1' })
 
-const poolSize = 5
+const poolSize = 1
 const pySandbox = new Sandbox({poolSize})
 
 console.log('Starting sandbox...');
@@ -22,6 +22,7 @@ pySandbox.initialize(err => {
     console.log('Start listening for tweet containing @PythonCodeBot1...');
     twitterStream.on('tweet', tweet => {
         console.log(`Tweet recieved from ${tweet.user.name} : ${tweet.text}`);
+        console.log(tweet);
 
         const code = tweet.text.replace('@PythonCodeBot1', '').trim();
         console.log('code : ', code);
@@ -33,6 +34,10 @@ pySandbox.initialize(err => {
             }
 
             console.log('execution result : ', result); // Hello, world!
+            T.post('statuses/update', {
+                status: `@${tweet.user.screen_name} ${result.combined}`,
+                in_reply_to_status_id: tweet.id
+            });
         });
     });
 });
