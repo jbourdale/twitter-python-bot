@@ -15,7 +15,7 @@ on:
     branches: [master]
 
 env:
-  TEST: ${{ secrets.TEST || "oui" }}
+  TEST: ${{ secrets.TEST || 'oui' }}
 
 jobs:
   test:
